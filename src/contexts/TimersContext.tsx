@@ -10,9 +10,11 @@ type Timer = {
 const TimersContext = createContext<{
 	timers: Timer[];
 	addTimer: (timer: Timer) => void;
+	editTimer: (timer: Timer) => void;
 }>({
 	timers: [],
 	addTimer: () => {},
+	editTimer: () => {},
 });
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({
@@ -24,8 +26,16 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({
 		setTimers((prevTimers) => [...prevTimers, timer]);
 	};
 
+	const editTimer = (editedTimer: Timer) => {
+		setTimers((prevTimers) =>
+			prevTimers.map((timer) =>
+				timer.id === editedTimer.id ? { ...timer, ...editedTimer } : timer
+			)
+		);
+	};
+
 	return (
-		<TimersContext.Provider value={{ timers, addTimer }}>
+		<TimersContext.Provider value={{ timers, addTimer, editTimer }}>
 			{children}
 		</TimersContext.Provider>
 	);

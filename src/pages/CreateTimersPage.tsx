@@ -7,7 +7,6 @@ const CreateTimersPage: React.FC = () => {
 	const [timersName, setTimersName] = useState<string>('');
 	const [timersDescription, setTimersDescription] = useState<string>('');
 	const [timersValue, setTimersValue] = useState<string>('');
-	const [timersId, setTimersId] = useState<string>('');
 	const { addTimer, timers } = useTimers();
 
 	const handleCreateTimer = () => {
@@ -15,12 +14,11 @@ const CreateTimersPage: React.FC = () => {
 			name: timersName,
 			description: timersDescription,
 			value: Number(timersValue),
-			id: Number(timersId),
+			id: timers.length,
 		};
 		addTimer(newTimer);
 		setTimersName('');
 		setTimersDescription('');
-		setTimersId('');
 		setTimersValue('');
 	};
 
@@ -45,12 +43,6 @@ const CreateTimersPage: React.FC = () => {
 						placeholder='Timer description'
 						value={timersDescription}
 						onChange={(e) => setTimersDescription(e.target.value)}
-					/>
-					<Form
-						labelText='Enter timer id:'
-						placeholder='Timer id'
-						value={timersId}
-						onChange={(e) => setTimersId(e.target.value)}
 					/>
 					<Form
 						labelText='Enter timer value:'
