@@ -27,7 +27,7 @@ const MainPage: React.FC = () => {
 					<>
 						<div className='max-w-max grid lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-x-4 mb-5'>
 							{timers.map((timer) => (
-								<TimerCard key='' data={timer} />
+								<TimerCard cardKey={timer.id.toString()} data={timer} />
 							))}
 						</div>
 						<Link to={`/createTimers`}>
