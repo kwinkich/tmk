@@ -11,8 +11,8 @@ const TimersContext = createContext<{
 	timers: Timer[];
 	addTimer: (timer: Timer) => void;
 	editTimer: (timer: Timer) => void;
-	convertToTimeFormat: (minutes: number) => string;
-	convertToMinutes: (time: string) => number;
+	convertToTimeFormat: (seconds: number) => string;
+	convertToMinutes: (seconds: number) => number;
 }>({
 	timers: [],
 	addTimer: () => {},
@@ -38,18 +38,18 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({
 		);
 	};
 
-	const convertToTimeFormat = (minutes: number): string => {
-		const hours = Math.floor(minutes / 60);
-		const remainingMinutes = minutes % 60;
-		const seconds = (remainingMinutes % 60) * 0;
-		return `${String(hours).padStart(2, '0')}:${String(
-			remainingMinutes
-		).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+	const convertToTimeFormat = (seconds: number): string => {
+		const hours = Math.floor(seconds / 3600);
+		const minutes = Math.floor((seconds % 3600) / 60);
+		const remainingSeconds = seconds % 60;
+		return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(
+			2,
+			'0'
+		)}:${String(remainingSeconds).padStart(2, '0')}`;
 	};
 
-	const convertToMinutes = (time: string): number => {
-		const [hours, minutes, seconds] = time.split(':').map(Number);
-		return hours * 60 + minutes + seconds / 60;
+	const convertToMinutes = (seconds: number): number => {
+		return Math.floor((seconds % 3600) / 60);
 	};
 
 	return (

@@ -7,10 +7,6 @@ import { useTimers } from '../contexts/TimersContext';
 const MainPage: React.FC = () => {
 	const { timers } = useTimers();
 
-	useEffect(() => {
-		console.log(timers);
-	}, [timers]);
-
 	return (
 		<div className='w-full mt-14'>
 			<div className='max-w-[90%] ml-36'>

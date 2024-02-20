@@ -4,11 +4,11 @@ import Button from '../components/Button/Buttons';
 import { useTimers } from '../contexts/TimersContext';
 
 export default function StatsPage() {
-	const { timers } = useTimers();
+	const { timers, convertToMinutes } = useTimers();
 
 	const pieChartData = timers.map((timer) => ({
 		id: timer.id,
-		value: timer.value,
+		value: convertToMinutes(timer.value),
 		label: `${timer.name}`,
 	}));
 	return (

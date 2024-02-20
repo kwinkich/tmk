@@ -9,26 +9,49 @@ export default function TimerPage() {
 	const { timers, editTimer, convertToTimeFormat } = useTimers();
 	const [timerName, setTimerName] = useState<string>('');
 	const [timerDescription, setTimerDescription] = useState<string>('');
-	const [timerValue, setTimerValue] = useState('');
+	const [timerValue, setTimerValue] = useState<number>(0);
+	const [currentTimerValue, setCurrentTimerValue] = useState<number>(0);
+	const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 	const [isEdit, setIsEdit] = useState(false);
+	const [isTimerStart, setIsTimerStart] = useState(false);
 
 	function handleEdit() {
 		setIsEdit(false);
 		const currentTimer = {
 			name: timerName,
 			description: timerDescription,
-			value: Number(timerValue) || timer?.value || NaN,
-			id: timer?.id || NaN,
+			value: timer?.value || 0,
+			id: timer?.id || 0,
 		};
 		editTimer(currentTimer);
 		setTimerName('');
 		setTimerDescription('');
-		setTimerValue('');
 	}
 
 	const timer = id
 		? timers.find((timer) => timer.id === parseInt(id, 10))
 		: undefined;
+
+	function handleStartTimer() {
+		setIsTimerStart(true);
+		const id = setInterval(() => {
+			if (timer) {
+				const newValue = (timer.value ?? 0) + 1;
+				timer.value = newValue;
+				setCurrentTimerValue(newValue);
+			}
+		}, 1000);
+		setIntervalId(id);
+	}
+
+	function handleStopTimer() {
+		setTimerValue(0);
+		setIsTimerStart(false);
+		if (intervalId) {
+			clearInterval(intervalId);
+			setIntervalId(null);
+		}
+	}
 
 	return (
 		<section className='w-full mt-14'>
@@ -44,10 +67,16 @@ export default function TimerPage() {
 						</div>
 						<div className='flex flex-col items-center'>
 							<p className='text-2xl font-bold text-white'>
-								Total time: {convertToTimeFormat(timer.value)}
+								Total time: {convertToTimeFormat(timer?.value)}
 							</p>
 							<div className='mt-6'>
-								<Button>Start Timer</Button>
+								{isTimerStart ? (
+									<Button click={handleStopTimer} isDanger={true}>
+										Stop Timer
+									</Button>
+								) : (
+									<Button click={handleStartTimer}>Start Timer</Button>
+								)}
 							</div>
 						</div>
 					</div>
