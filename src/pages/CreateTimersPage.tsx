@@ -6,20 +6,18 @@ import { useTimers } from '../contexts/TimersContext';
 const CreateTimersPage: React.FC = () => {
 	const [timersName, setTimersName] = useState<string>('');
 	const [timersDescription, setTimersDescription] = useState<string>('');
-	const [timersValue, setTimersValue] = useState<string>('');
 	const { addTimer, timers } = useTimers();
 
 	const handleCreateTimer = () => {
 		const newTimer = {
 			name: timersName,
 			description: timersDescription,
-			value: Number(timersValue),
+			value: 0,
 			id: timers.length,
 		};
 		addTimer(newTimer);
 		setTimersName('');
 		setTimersDescription('');
-		setTimersValue('');
 	};
 
 	useEffect(() => {
@@ -43,12 +41,6 @@ const CreateTimersPage: React.FC = () => {
 						placeholder='Timer description'
 						value={timersDescription}
 						onChange={(e) => setTimersDescription(e.target.value)}
-					/>
-					<Form
-						labelText='Enter timer value:'
-						placeholder='Timer value'
-						value={timersValue}
-						onChange={(e) => setTimersValue(e.target.value)}
 					/>
 					<Button click={handleCreateTimer}>Create timer</Button>
 				</div>

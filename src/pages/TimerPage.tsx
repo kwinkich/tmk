@@ -6,9 +6,9 @@ import { useTimers } from '../contexts/TimersContext';
 
 export default function TimerPage() {
 	const { id } = useParams();
-	const { timers, editTimer } = useTimers();
-	const [timerName, setTimerName] = useState('');
-	const [timerDescription, setTimerDescription] = useState('');
+	const { timers, editTimer, convertToTimeFormat } = useTimers();
+	const [timerName, setTimerName] = useState<string>('');
+	const [timerDescription, setTimerDescription] = useState<string>('');
 	const [timerValue, setTimerValue] = useState('');
 	const [isEdit, setIsEdit] = useState(false);
 
@@ -35,12 +35,21 @@ export default function TimerPage() {
 			<div className='max-w-[90%] ml-36'>
 				<h1 className='text-3xl text-white font-bold mb-10'>{timer?.name}</h1>
 				{timer && !isEdit && (
-					<div className='mb-14'>
-						<p className='text-lg text-white'>Name: {timer.name}</p>
-						<p className='text-lg text-white'>
-							Description: {timer.description}
-						</p>
-						<p className='text-lg text-white'>Value: {timer.value}</p>
+					<div className='flex items-center justify-between max-w-[50%] mb-14'>
+						<div>
+							<p className='text-xl text-white'>Name: {timer.name}</p>
+							<p className='text-xl text-white'>
+								Description: {timer.description}
+							</p>
+						</div>
+						<div className='flex flex-col items-center'>
+							<p className='text-2xl font-bold text-white'>
+								Total time: {convertToTimeFormat(timer.value)}
+							</p>
+							<div className='mt-6'>
+								<Button>Start Timer</Button>
+							</div>
+						</div>
 					</div>
 				)}
 				{isEdit && (
@@ -55,12 +64,6 @@ export default function TimerPage() {
 							<Input
 								placeholder='Timer description'
 								change={(e) => setTimerDescription(e.target.value)}
-							></Input>
-						</div>
-						<div>
-							<Input
-								placeholder='Timer value'
-								change={(e) => setTimerValue(e.target.value)}
 							></Input>
 						</div>
 						<div className='mt-3'>
