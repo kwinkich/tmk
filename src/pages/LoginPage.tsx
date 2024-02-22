@@ -23,9 +23,9 @@ export default function LoginPage() {
 						setUsername(e.target.value)
 					}
 				/>
-				<Button href={`/main`} click={storageUsername}>
-					Login
-				</Button>
+				<Link to={`/main`}>
+					<Button click={storageUsername}>Register</Button>
+				</Link>
 				<p className='text-center text-lg text-gray-200'>or</p>
 				<Link to={`/register`}>
 					<p className='text-center text-xl text-white font-medium'>

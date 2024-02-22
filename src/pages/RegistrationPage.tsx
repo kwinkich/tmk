@@ -22,9 +22,9 @@ export default function RegistrationPage() {
 					change={(e) => setUsername(e.target.value)}
 				/>
 				<Input placeholder='specialty' />
-				<Button href={`/main`} click={storageUsername}>
-					Register
-				</Button>
+				<Link to={`/main`}>
+					<Button click={storageUsername}>Register</Button>
+				</Link>
 				<p className='text-center text-lg text-gray-200'>or</p>
 				<Link to={`/login`}>
 					<p className='text-center text-xl text-white font-medium'>Login</p>

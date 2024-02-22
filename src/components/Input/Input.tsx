@@ -10,7 +10,7 @@ const Input: React.FC<InputProps> = ({ placeholder, value, change }) => {
 			placeholder={placeholder}
 			value={value}
 			onChange={change}
-			className='text-lg pl-5 py-4 rounded-lg'
+			className='text-lg pl-4 py-4 bg-zinc-700 text-gray-400'
 			type='text'
 		/>
 	);

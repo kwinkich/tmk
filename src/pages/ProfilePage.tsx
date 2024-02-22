@@ -5,45 +5,77 @@ import Input from '../components/Input/Input';
 import { useTimers } from '../contexts/TimersContext';
 
 export default function ProfilePage() {
-	const { timers } = useTimers();
+	const { timers, convertToTimeFormat } = useTimers();
 	const [username, editUsername] = useState('');
 	const [isEdit, setIsEdit] = useState(false);
+	let totalTime = 0;
+
+	for (let i = 0; i < timers.length; i++) {
+		totalTime += timers[i].value;
+	}
 
 	return (
-		<section className='w-full mt-14'>
-			<div className='max-w-[90%] ml-36'>
-				<h1 className='text-3xl text-white font-bold mb-10'>Your Profile</h1>
+		<section className='w-full mt-[100px]'>
+			<div className='max-w-[90%] ml-[100px]'>
+				<h1 className='text-4xl text-white font-bold mb-10'>Profile</h1>
 				<div>
 					<div className='flex flex-col gap-y-3'>
 						{!isEdit ? (
-							<p className='text-xl text-white'>
-								Profile Name: {localStorage.getItem('username')}
-							</p>
+							<>
+								<p className='text-2xl text-white lining-nums font-medium'>
+									Name:{' '}
+									<span className=' font-normal'>
+										{localStorage.getItem('username')}
+									</span>
+								</p>
+								<p className='text-2xl text-white lining-nums font-medium'>
+									Timer count:{' '}
+									<span className=' font-normal'>{timers.length}</span>
+								</p>
+								<p className='text-2xl text-white lining-nums font-medium'>
+									Total time:{' '}
+									<span className=' font-normal'>
+										{convertToTimeFormat(totalTime)}
+									</span>
+								</p>
+								<div className='flex  items-center gap-x-3 mt-14'>
+									<Button click={() => setIsEdit(true)}>Edit</Button>
+									<Link to={`/login`}>
+										<Button isDanger={true}>Exit</Button>
+									</Link>
+								</div>
+							</>
 						) : (
-							<div className='flex gap-x-3'>
-								<Input
-									placeholder='Edit new username'
-									change={(e) => editUsername(e.target.value)}
-								/>
-								<Button
-									click={() => {
-										localStorage.setItem('username', username);
-										setIsEdit(false);
-									}}
-								>
-									OK
-								</Button>
-							</div>
+							<>
+								<div className='flex flex-col gap-y-2'>
+									<p className=' text-2xl text-white font-medium'>Name:</p>
+									<div>
+										<Input
+											placeholder='Edit new username'
+											change={(e) => editUsername(e.target.value)}
+										/>
+									</div>
+								</div>
+								<div className='flex  items-center gap-x-3 mt-14'>
+									<Button
+										click={() => {
+											localStorage.setItem('username', username);
+											setIsEdit(false);
+										}}
+									>
+										Ok
+									</Button>
+									<Button
+										isDanger={true}
+										click={() => {
+											setIsEdit(false);
+										}}
+									>
+										Canel
+									</Button>
+								</div>
+							</>
 						)}
-						<p className='text-xl text-white'>
-							Current Timers: {timers.length}
-						</p>
-					</div>
-					<div className='flex  items-center gap-x-3 mt-14'>
-						<Link to={`/login`}>
-							<Button isDanger={true}>Exit</Button>
-						</Link>
-						<Button click={() => setIsEdit(true)}>Edit</Button>
 					</div>
 				</div>
 			</div>

@@ -1,27 +1,24 @@
 interface ButtonProps {
 	children: React.ReactNode;
-	href?: string;
 	isDanger?: boolean;
 	click?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, href, isDanger, click }) => {
+const Button: React.FC<ButtonProps> = ({ children, isDanger, click }) => {
 	return isDanger === true ? (
-		<a
+		<button
 			onClick={click}
-			href={href}
-			className='cursor-pointer text-lg text-center px-8 py-4 bg-red-500 text-white font-bold rounded-lg'
+			className='cursor-pointer text-center px-12 py-4 text-lg text-white font-bold border-2 border-red-500 border-dashed hover:bg-red-500'
 		>
 			{children}
-		</a>
+		</button>
 	) : (
-		<a
+		<button
 			onClick={click}
-			href={href}
-			className='cursor-pointer text-lg text-center px-8 py-4 bg-emerald-400 text-zinc-900 font-bold rounded-lg'
+			className='cursor-pointer text-center px-12 py-4 text-lg text-white font-bold border-2 border-emerald-500 border-dashed hover:bg-emerald-500'
 		>
 			{children}
-		</a>
+		</button>
 	);
 };
 

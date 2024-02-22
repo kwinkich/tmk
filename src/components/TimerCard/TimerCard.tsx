@@ -11,14 +11,12 @@ interface TimerCardProps {
 const TimerCard: React.FC<TimerCardProps> = ({ data, cardKey, href, id }) => {
 	const { convertToTimeFormat } = useTimers();
 
-	const timeValue = id !== undefined && data.value ? data.value : 0;
-
 	return (
 		<Link to={`/timer/${data.id}`}>
 			<a
 				href={href}
 				key={cardKey}
-				className='flex items-center justify-between sm:w-[290px] border-2 px-8 py-6 rounded-xl mb-4 cursor-pointer hover:bg-zinc-800 duration-300 ease-in-out '
+				className='flex items-center justify-between sm:w-[290px] border-2 border-gray-400 border-dashed px-8 py-6 mb-4 cursor-pointer hover:bg-zinc-800 duration-300 ease-in-out '
 			>
 				<div>
 					<h1 className='text-xl text-white font-semibold'>{data.name}</h1>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button/Buttons';
 import TimerCard from '../components/TimerCard/TimerCard';
@@ -8,16 +8,17 @@ const MainPage: React.FC = () => {
 	const { timers } = useTimers();
 
 	return (
-		<div className='w-full mt-14'>
-			<div className='max-w-[90%] ml-36'>
-				<h1 className='text-3xl text-white font-bold mb-10'>Your Timers</h1>
+		<div className='w-full mt-[100px]'>
+			<div className='max-w-[90%] ml-[100px]'>
+				<h1 className='text-4xl text-white font-bold mb-10'>Timers</h1>
 				{timers.length === 0 ? (
 					<div className=' mt-5'>
 						<p className='text-lg text-white font-medium mb-10'>
-							You didnt have any timers. If you want to create timers please
-							click in button
+							You don't have any timers. Please create timers
 						</p>
-						<Button href='/createTimers'>Create Timers</Button>
+						<Link to={`/createTimers`}>
+							<Button>Create Timers</Button>
+						</Link>
 					</div>
 				) : (
 					<>

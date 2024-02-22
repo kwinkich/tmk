@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export default function SidebarComponent() {
 	return (
 		<Sidebar
-			className='border-0 h-screen'
+			className='border-0 h-screen w-[275px]'
 			rootStyles={{
 				[`.${sidebarClasses.container}`]: {
-					backgroundColor: 'rgb(39 39 42)',
+					backgroundColor: '#3f3f46',
 				},
 			}}
 		>
@@ -15,39 +15,50 @@ export default function SidebarComponent() {
 				menuItemStyles={{
 					button: {
 						['&:hover']: {
-							backgroundColor: 'rgb(68 64 60)',
+							backgroundColor: '#18181b',
 						},
 						[`&.active`]: {
-							backgroundColor: '#13395e',
-							color: '#b6c8d9',
+							backgroundColor: '#18181b',
+							color: 'white',
 						},
 					},
 				}}
 			>
-				<p className='text-2xl text-emerald-300 ml-[20px] mt-7 font-bold'>
-					TMK Proj
-				</p>
+				<div className='ml-[50px] mt-[50px] '>
+					<p className='text-3xl text-white font-bold'>TMK</p>
+					<p className='text-white'>Timer Manage Kiwnkich</p>
+				</div>
 				<Link to={`/profile`}>
-					<MenuItem className='mt-9 text-lg text-white'>Profile</MenuItem>
+					<MenuItem className='mt-16 text-lg text-white'>
+						<p className='pl-9'>Profile</p>
+					</MenuItem>
 				</Link>
 				<Link to={`/main`}>
-					<MenuItem className='text-lg text-white'>Main</MenuItem>
+					<MenuItem className='text-lg text-white'>
+						<p className='pl-9'>Main</p>
+					</MenuItem>
 				</Link>
 				<Link to={`/stats`}>
-					<MenuItem className='text-lg text-white'>Stats</MenuItem>
+					<MenuItem className='text-lg text-white'>
+						<p className='pl-9'>Stats</p>
+					</MenuItem>
 				</Link>
 				<Link to={`/createTimers`}>
-					<MenuItem className='text-lg text-white'>Create Timer</MenuItem>
+					<MenuItem className='text-lg text-white'>
+						<p className='pl-9'>Create Timer</p>
+					</MenuItem>
 				</Link>
 				<Link to={`/about`}>
-					<MenuItem className='text-lg text-white'>About</MenuItem>
+					<MenuItem className='text-lg text-white'>
+						<p className='pl-9'>About</p>
+					</MenuItem>
 				</Link>
 				<MenuItem
 					href='https://github.com/kwinkich'
 					target='_blank'
 					className='text-lg text-white'
 				>
-					GitHub
+					<p className='pl-9'>GitHub</p>
 				</MenuItem>
 			</Menu>
 		</Sidebar>

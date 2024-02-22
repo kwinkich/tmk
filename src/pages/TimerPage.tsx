@@ -64,20 +64,16 @@ export default function TimerPage() {
 							<p className='text-xl text-white'>
 								Description: {timer.description}
 							</p>
-						</div>
-						<div className='flex flex-col items-center'>
-							<p className='text-2xl font-bold text-white'>
+							<p className='text-xl text-white mb-5'>
 								Total time: {convertToTimeFormat(timer?.value)}
 							</p>
-							<div className='mt-6'>
-								{isTimerStart ? (
-									<Button click={handleStopTimer} isDanger={true}>
-										Stop Timer
-									</Button>
-								) : (
-									<Button click={handleStartTimer}>Start Timer</Button>
-								)}
-							</div>
+							{isTimerStart ? (
+								<Button click={handleStopTimer} isDanger={true}>
+									Stop Timer
+								</Button>
+							) : (
+								<Button click={handleStartTimer}>Start Timer</Button>
+							)}
 						</div>
 					</div>
 				)}
