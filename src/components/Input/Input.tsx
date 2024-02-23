@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 interface InputProps {
 	placeholder: string;
 	value?: string;
@@ -5,12 +6,18 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({ placeholder, value, change }) => {
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm();
+
 	return (
 		<input
 			placeholder={placeholder}
 			value={value}
 			onChange={change}
-			className='text-lg pl-4 py-4 bg-zinc-700 text-gray-400'
+			className='text-lg pl-4 py-4 bg-zinc-700 text-gray-400 lining-nums'
 			type='text'
 		/>
 	);

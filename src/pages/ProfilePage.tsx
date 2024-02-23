@@ -8,10 +8,20 @@ export default function ProfilePage() {
 	const { timers, convertToTimeFormat } = useTimers();
 	const [username, editUsername] = useState('');
 	const [isEdit, setIsEdit] = useState(false);
+	const [isErrorInput, setIsErrorInput] = useState(false);
 	let totalTime = 0;
-
 	for (let i = 0; i < timers.length; i++) {
 		totalTime += timers[i].value;
+	}
+
+	function setName() {
+		if (username !== '' && username !== ' ' && username !== undefined) {
+			localStorage.setItem('username', username);
+			setIsEdit(false);
+			setIsErrorInput(false);
+		} else {
+			setIsErrorInput(true);
+		}
 	}
 
 	return (
@@ -24,17 +34,19 @@ export default function ProfilePage() {
 							<>
 								<p className='text-2xl text-white lining-nums font-medium'>
 									Name:{' '}
-									<span className=' font-normal'>
+									<span className='lining-nums font-normal'>
 										{localStorage.getItem('username')}
 									</span>
 								</p>
 								<p className='text-2xl text-white lining-nums font-medium'>
 									Timer count:{' '}
-									<span className=' font-normal'>{timers.length}</span>
+									<span className='lining-nums font-normal'>
+										{timers.length}
+									</span>
 								</p>
 								<p className='text-2xl text-white lining-nums font-medium'>
 									Total time:{' '}
-									<span className=' font-normal'>
+									<span className='lining-nums font-normal'>
 										{convertToTimeFormat(totalTime)}
 									</span>
 								</p>
@@ -54,17 +66,13 @@ export default function ProfilePage() {
 											placeholder='Edit new username'
 											change={(e) => editUsername(e.target.value)}
 										/>
+										{isErrorInput ? (
+											<p className='text-lg text-red-400'>Error</p>
+										) : null}
 									</div>
 								</div>
 								<div className='flex  items-center gap-x-3 mt-14'>
-									<Button
-										click={() => {
-											localStorage.setItem('username', username);
-											setIsEdit(false);
-										}}
-									>
-										Ok
-									</Button>
+									<Button click={() => setName()}>Ok</Button>
 									<Button
 										isDanger={true}
 										click={() => {

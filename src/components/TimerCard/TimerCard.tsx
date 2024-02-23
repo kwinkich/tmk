@@ -23,7 +23,7 @@ const TimerCard: React.FC<TimerCardProps> = ({ data, cardKey, href, id }) => {
 					<p className='text-lg text-gray-300'>{data.description}</p>
 				</div>
 				<div>
-					<p className='text-base text-white'>
+					<p className='text-base text-white lining-nums'>
 						{convertToTimeFormat(data.value)}
 					</p>
 				</div>

@@ -6,18 +6,31 @@ import { useTimers } from '../contexts/TimersContext';
 const CreateTimersPage: React.FC = () => {
 	const [timersName, setTimersName] = useState<string>('');
 	const [timersDescription, setTimersDescription] = useState<string>('');
+	const [isErrorInput, setIsErrorInput] = useState(false);
 	const { addTimer, timers } = useTimers();
 
 	const handleCreateTimer = () => {
-		const newTimer = {
-			name: timersName,
-			description: timersDescription,
-			value: 0,
-			id: timers.length,
-		};
-		addTimer(newTimer);
-		setTimersName('');
-		setTimersDescription('');
+		if (
+			timersName !== '' &&
+			timersName !== ' ' &&
+			timersName !== undefined &&
+			timersDescription !== '' &&
+			timersDescription !== ' ' &&
+			timersDescription !== undefined
+		) {
+			setIsErrorInput(false);
+			const newTimer = {
+				name: timersName,
+				description: timersDescription,
+				value: 0,
+				id: timers.length,
+			};
+			addTimer(newTimer);
+			setTimersName('');
+			setTimersDescription('');
+		} else {
+			setIsErrorInput(true);
+		}
 	};
 
 	useEffect(() => {
@@ -42,6 +55,9 @@ const CreateTimersPage: React.FC = () => {
 						value={timersDescription}
 						onChange={(e) => setTimersDescription(e.target.value)}
 					/>
+					{isErrorInput ? (
+						<p className='text-lg text-red-400'>All fields must be filled in</p>
+					) : null}
 					<Button click={handleCreateTimer}>Create timer</Button>
 				</div>
 			</div>
