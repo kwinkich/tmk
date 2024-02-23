@@ -5,15 +5,10 @@ import Input from '../components/Input/Input';
 import { useTimers } from '../contexts/TimersContext';
 
 export default function ProfilePage() {
-	const { timers, convertToTimeFormat, getTotalTime } = useTimers();
+	const { timers, getTotalTime } = useTimers();
 	const [username, editUsername] = useState('');
 	const [isEdit, setIsEdit] = useState(false);
 	const [isErrorInput, setIsErrorInput] = useState(false);
-	let totalTime = 0;
-	for (let i = 0; i < timers.length; i++) {
-		totalTime += timers[i].value;
-	}
-
 	function setName() {
 		if (username !== '' && username !== ' ' && username !== undefined) {
 			localStorage.setItem('username', username);

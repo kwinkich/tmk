@@ -4,13 +4,7 @@ import Button from '../components/Button/Buttons';
 import { useTimers } from '../contexts/TimersContext';
 
 export default function StatsPage() {
-	const { timers, convertToMinutes, convertToTimeFormat } = useTimers();
-
-	let totalTime = 0;
-
-	for (let i = 0; i < timers.length; i++) {
-		totalTime += timers[i].value;
-	}
+	const { timers, convertToMinutes, getTotalTime } = useTimers();
 
 	const pieChartData = timers.map((timer) => ({
 		id: timer.id,
@@ -57,9 +51,7 @@ export default function StatsPage() {
 							/>
 							<p className='text-2xl text-white lining-nums font-medium'>
 								Total time:{' '}
-								<span className=' font-normal'>
-									{convertToTimeFormat(totalTime)}
-								</span>
+								<span className=' font-normal'>{getTotalTime(timers)}</span>
 							</p>
 						</div>
 					)}
