@@ -13,12 +13,14 @@ const TimersContext = createContext<{
 	editTimer: (timer: Timer) => void;
 	convertToTimeFormat: (seconds: number) => string;
 	convertToMinutes: (seconds: number) => number;
+	getTotalTime: (timersArr: Array<Timer>) => string;
 }>({
 	timers: [],
 	addTimer: () => {},
 	editTimer: () => {},
 	convertToTimeFormat: () => '00:00:00',
 	convertToMinutes: () => 0,
+	getTotalTime: () => '00:00:00',
 });
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({
@@ -52,6 +54,14 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({
 		return Math.floor((seconds % 3600) / 60);
 	};
 
+	const getTotalTime = (timers: Array<Timer>): string => {
+		let res = 0;
+		for (let i = 0; i < timers.length; i++) {
+			res += timers[i].value;
+		}
+		return convertToTimeFormat(res);
+	};
+
 	return (
 		<TimersContext.Provider
 			value={{
@@ -60,6 +70,7 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({
 				editTimer,
 				convertToTimeFormat,
 				convertToMinutes,
+				getTotalTime,
 			}}
 		>
 			{children}

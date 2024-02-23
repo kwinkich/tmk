@@ -5,7 +5,7 @@ import Input from '../components/Input/Input';
 import { useTimers } from '../contexts/TimersContext';
 
 export default function ProfilePage() {
-	const { timers, convertToTimeFormat } = useTimers();
+	const { timers, convertToTimeFormat, getTotalTime } = useTimers();
 	const [username, editUsername] = useState('');
 	const [isEdit, setIsEdit] = useState(false);
 	const [isErrorInput, setIsErrorInput] = useState(false);
@@ -47,7 +47,7 @@ export default function ProfilePage() {
 								<p className='text-2xl text-white lining-nums font-medium'>
 									Total time:{' '}
 									<span className='lining-nums font-normal'>
-										{convertToTimeFormat(totalTime)}
+										{getTotalTime(timers)}
 									</span>
 								</p>
 								<div className='flex  items-center gap-x-3 mt-14'>
