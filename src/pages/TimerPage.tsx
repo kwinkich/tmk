@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Button from '../components/Button/Buttons';
 import Input from '../components/Input/Input';
@@ -16,6 +16,15 @@ export default function TimerPage() {
 	const [isErrorInput, setIsErrorInput] = useState(false);
 
 	const [isTimerStart, setIsTimerStart] = useState(false);
+
+	useEffect(() => {
+		return () => {
+			// Остановить таймер при размонтировании компонента
+			if (intervalId) {
+				clearInterval(intervalId);
+			}
+		};
+	}, [intervalId]);
 
 	function handleEdit() {
 		if (
@@ -120,7 +129,14 @@ export default function TimerPage() {
 					</div>
 				)}
 				<div className='flex items-center gap-x-3'>
-					<Button click={() => setIsEdit(true)}>Edit</Button>
+					<Button
+						click={() => {
+							setIsTimerStart(false);
+							setIsEdit(true);
+						}}
+					>
+						Edit
+					</Button>
 					<Link to={`/main`}>
 						<Button isDanger={true}>Back</Button>
 					</Link>
