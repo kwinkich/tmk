@@ -15,7 +15,7 @@ const Form: React.FC<FormProps> = ({
 	onChange,
 }) => {
 	return (
-		<div className='flex flex-col max-w-[300px] gap-y-2'>
+		<div className='flex-flex-col max-w-[300px] gap-y-2'>
 			<Label>{labelText}</Label>
 			<Input
 				placeholder={placeholder}

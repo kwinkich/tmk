@@ -19,7 +19,7 @@ const TimerCard: React.FC<TimerCardProps> = ({ data, cardKey, href, id }) => {
 				className='flex items-center justify-between sm:w-[290px] border-2 border-gray-400 border-dashed px-8 py-6 mb-4 cursor-pointer hover:bg-zinc-800 duration-300 ease-in-out '
 			>
 				<div>
-					<h1 className='text-xl text-white font-semibold'>{data.name}</h1>
+					<h1 className='text-1 font-semibold'>{data.name}</h1>
 					<p className='text-lg text-gray-300'>{data.description}</p>
 				</div>
 				<div>

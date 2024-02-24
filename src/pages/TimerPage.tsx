@@ -76,21 +76,15 @@ export default function TimerPage() {
 	}
 
 	return (
-		<section className='w-full mt-14'>
-			<div className='max-w-[90%] ml-36'>
-				<h1 className='text-3xl text-white font-bold mb-10 lining-nums'>
-					{timer?.name}
-				</h1>
+		<section className='section'>
+			<div className='section-block'>
+				<h1 className='hero-text mb-10'>{timer?.name}</h1>
 				{timer && !isEdit && (
 					<div className='flex items-center justify-between max-w-[50%] mb-14'>
 						<div>
-							<p className='text-xl text-white lining-nums'>
-								Name: {timer.name}
-							</p>
-							<p className='text-xl text-white lining-nums'>
-								Description: {timer.description}
-							</p>
-							<p className='text-xl text-white mb-5 lining-nums'>
+							<p className='text-1'>Name: {timer.name}</p>
+							<p className='text-1'>Description: {timer.description}</p>
+							<p className='text-1 mb-5'>
 								Total time: {convertToTimeFormat(timer?.value)}
 							</p>
 							{isTimerStart ? (
@@ -104,7 +98,7 @@ export default function TimerPage() {
 					</div>
 				)}
 				{isEdit && (
-					<div className='mb-14 flex flex-col gap-y-3'>
+					<div className='mb-14 flex-flex-col gap-y-3'>
 						<div>
 							<Input
 								placeholder='Timer name'

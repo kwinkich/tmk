@@ -8,3 +8,42 @@
 		font-family: "Raleway", sans-serif;
 	}
 }
+
+
+@layer components {
+	.section {
+		@apply w-full mt-[100px];
+	}
+
+	.section-block {
+		@apply max-w-[90%] ml-[100px];
+	}
+
+	.hero-text {
+		@apply text-4xl text-white font-bold mb-10 lining-nums;
+	}
+
+	.text-2 {
+		@apply text-2xl text-white font-medium lining-nums;
+	}
+
+	.text-1 {
+		@apply text-xl text-white lining-nums;
+	}
+
+	.paragraph {
+		@apply text-lg text-white;
+	}
+
+	.flex-flex-col {
+		@apply flex flex-col;
+	}
+
+	.btn {
+		@apply cursor-pointer text-center px-12 py-4 text-lg text-white font-bold border-2 border-dashed;
+	}
+
+	.input {
+		@apply text-lg pl-4 py-4 bg-zinc-700 text-gray-400 lining-nums;
+	}
+}

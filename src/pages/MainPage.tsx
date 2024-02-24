@@ -8,12 +8,12 @@ const MainPage: React.FC = () => {
 	const { timers } = useTimers();
 
 	return (
-		<div className='w-full mt-[100px]'>
-			<div className='max-w-[90%] ml-[100px]'>
-				<h1 className='text-4xl text-white font-bold mb-10'>Timers</h1>
+		<section className='section'>
+			<div className='section-block'>
+				<h1 className='hero-text'>Timers</h1>
 				{timers.length === 0 ? (
 					<div className=' mt-5'>
-						<p className='text-lg text-white font-medium mb-10'>
+						<p className='paragraph font-medium mb-10'>
 							You don't have any timers. Please create timers
 						</p>
 						<Link to={`/createTimers`}>
@@ -33,7 +33,7 @@ const MainPage: React.FC = () => {
 					</>
 				)}
 			</div>
-		</div>
+		</section>
 	);
 };
 

@@ -3,9 +3,7 @@ interface LabelProps {
 }
 
 const Label: React.FC<LabelProps> = ({ children }) => {
-	return (
-		<label className='text-2xl font-semibold text-white'>{children}</label>
-	);
+	return <label className='text-2'>{children}</label>;
 };
 
 export default Label;

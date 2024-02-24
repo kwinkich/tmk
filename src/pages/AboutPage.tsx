@@ -1,9 +1,9 @@
 export default function AboutPage() {
 	return (
-		<div className='w-full mt-[100px]'>
-			<div className='max-w-[90%] ml-[100px]'>
-				<h1 className='text-3xl text-white font-bold mb-10'>About Project</h1>
-				<p className='text-lg text-white font-semibold'>
+		<section className='section'>
+			<div className='section-block'>
+				<h1 className='hero-text mb-10'>About Project</h1>
+				<p className='paragraph font-semibold'>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia
 					fugit cum voluptate officiis rem obcaecati natus, asperiores fuga
 					molestias animi unde corrupti ullam deleniti. Officia dicta nemo,
@@ -17,6 +17,6 @@ export default function AboutPage() {
 					Perferendis, laborum dolor.
 				</p>
 			</div>
-		</div>
+		</section>
 	);
 }

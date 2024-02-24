@@ -38,11 +38,11 @@ const CreateTimersPage: React.FC = () => {
 	}, [timers]);
 
 	return (
-		<div className='w-full mt-[100px]'>
-			<div className='max-w-[90%] ml-[100px]'>
-				<h1 className='text-4xl text-white font-bold mb-10'>Create Timers</h1>
+		<div className='section'>
+			<div className='section-block'>
+				<h1 className='hero-text mb-10'>Create Timers</h1>
 
-				<div className='flex flex-col gap-y-5 max-w-[300px]'>
+				<div className='flex-flex-col gap-y-5 max-w-[300px]'>
 					<Form
 						labelText='Name:'
 						placeholder='Timer name'

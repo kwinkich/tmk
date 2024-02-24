@@ -12,11 +12,9 @@ export default function RegistrationPage() {
 
 	return (
 		<div className='container mx-auto flex flex-col items-center justify-center h-screen'>
-			<h1 className='text-4xl text-white font-bold'>Welcome to TMK!</h1>
-			<p className='text-2xl text-gray-300 font-medium mt-2'>
-				Register or login
-			</p>
-			<div className='flex flex-col mt-8 gap-y-5'>
+			<h1 className='hero-text'>Welcome to TMK!</h1>
+			<p className='text-2 mt-2'>Register or login</p>
+			<div className='flex-flex-col mt-8 gap-y-5'>
 				<Input
 					placeholder='username'
 					change={(e) => setUsername(e.target.value)}

@@ -12,13 +12,13 @@ export default function StatsPage() {
 		label: `${timer.name}`,
 	}));
 	return (
-		<section className='w-full mt-[100px]'>
-			<div className='max-w-[90%] ml-[100px]'>
-				<h1 className='text-4xl text-white font-bold'>Stats Page</h1>
+		<section className='section'>
+			<div className='section-block'>
+				<h1 className='hero-text'>Stats Page</h1>
 				<div>
 					{timers.length === 0 ? (
-						<div className='flex flex-col mt-6'>
-							<p className='text-lg text-white'>
+						<div className='flex-flex-col mt-6'>
+							<p className='paragraph'>
 								You didnt have any timers. Please create timer
 							</p>
 							<Link to={`/createTimers`} className='mt-12'>
@@ -49,7 +49,7 @@ export default function StatsPage() {
 								width={400}
 								height={325}
 							/>
-							<p className='text-2xl text-white lining-nums font-medium'>
+							<p className='text-2'>
 								Total time:{' '}
 								<span className=' font-normal'>{getTotalTime(timers)}</span>
 							</p>

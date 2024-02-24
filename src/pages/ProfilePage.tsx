@@ -20,32 +20,32 @@ export default function ProfilePage() {
 	}
 
 	return (
-		<section className='w-full mt-[100px]'>
-			<div className='max-w-[90%] ml-[100px]'>
-				<h1 className='text-4xl text-white font-bold mb-10'>Profile</h1>
+		<section className='section'>
+			<div className='section-block'>
+				<h1 className='hero-text'>Profile</h1>
 				<div>
-					<div className='flex flex-col gap-y-3'>
+					<div className='flex-flex-col gap-y-3'>
 						{!isEdit ? (
 							<>
-								<p className='text-2xl text-white lining-nums font-medium'>
+								<p className='text-2'>
 									Name:{' '}
 									<span className='lining-nums font-normal'>
 										{localStorage.getItem('username')}
 									</span>
 								</p>
-								<p className='text-2xl text-white lining-nums font-medium'>
+								<p className='text-2'>
 									Timer count:{' '}
 									<span className='lining-nums font-normal'>
 										{timers.length}
 									</span>
 								</p>
-								<p className='text-2xl text-white lining-nums font-medium'>
+								<p className='text-2'>
 									Total time:{' '}
 									<span className='lining-nums font-normal'>
 										{getTotalTime(timers)}
 									</span>
 								</p>
-								<div className='flex  items-center gap-x-3 mt-14'>
+								<div className='flex items-center gap-x-3 mt-14'>
 									<Button click={() => setIsEdit(true)}>Edit</Button>
 									<Link to={`/login`}>
 										<Button isDanger={true}>Exit</Button>
@@ -54,8 +54,8 @@ export default function ProfilePage() {
 							</>
 						) : (
 							<>
-								<div className='flex flex-col gap-y-2'>
-									<p className=' text-2xl text-white font-medium'>Name:</p>
+								<div className='flex-flex-col gap-y-2'>
+									<p className=' text-2'>Name:</p>
 									<div>
 										<Input
 											placeholder='Edit new username'
