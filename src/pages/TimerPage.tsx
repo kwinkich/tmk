@@ -19,7 +19,6 @@ export default function TimerPage() {
 
 	useEffect(() => {
 		return () => {
-			// Остановить таймер при размонтировании компонента
 			if (intervalId) {
 				clearInterval(intervalId);
 			}
